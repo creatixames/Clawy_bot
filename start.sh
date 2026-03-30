@@ -14,22 +14,11 @@ export OPENCLAW_GATEWAY_BIND="$GATEWAY_BIND"
 
 mkdir -p "$STATE_DIR" "$WORKSPACE_DIR"
 
-cat > "$STATE_DIR/openclaw.json" <<EOF
-{
-  "agent": {
-    "model": "gemini-3.1-flash-lite-preview"
-  },
-  "gateway": {
-    "port": $GATEWAY_PORT,
-    "bind": "$GATEWAY_BIND"
-  },
-  "channels": {
-    "telegram": {
-      "botToken": "$TELEGRAM_BOT_TOKEN"
-    }
-  }
-}
-EOF
+CONFIG_FILE="$STATE_DIR/openclaw.json"
+
+if [ -f "$CONFIG_FILE" ] && grep -q '"agent"' "$CONFIG_FILE"; then
+  mv "$CONFIG_FILE" "$CONFIG_FILE.legacy.bak"
+fi
 
 # Inicia OpenClaw
 exec node dist/index.js gateway --bind "$GATEWAY_BIND" --port "$GATEWAY_PORT" --allow-unconfigured --verbose
