@@ -32,4 +32,4 @@ cat > "$STATE_DIR/openclaw.json" <<EOF
 EOF
 
 # Inicia OpenClaw
-exec pnpm openclaw gateway --port "$GATEWAY_PORT" --allow-unconfigured --verbose
+exec node dist/index.js gateway --bind "$GATEWAY_BIND" --port "$GATEWAY_PORT" --allow-unconfigured --verbose
