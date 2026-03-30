@@ -7,9 +7,9 @@ services:
       - key: OPENCLAW_GATEWAY_BIND
         value: lan
       - key: OPENCLAW_STATE_DIR
-        value: /data/.openclaw
+        value: /home/node/.openclaw
       - key: OPENCLAW_WORKSPACE_DIR
-        value: /data/workspace
+        value: /home/node/.openclaw/workspace
       - key: OPENCLAW_GATEWAY_TOKEN
         generateValue: true
       - key: GEMINI_API_KEY

@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY start.sh /app/start.sh
 
-ENV OPENCLAW_STATE_DIR=/data/.openclaw
-ENV OPENCLAW_WORKSPACE_DIR=/data/workspace
+ENV OPENCLAW_STATE_DIR=/home/node/.openclaw
+ENV OPENCLAW_WORKSPACE_DIR=/home/node/.openclaw/workspace
 EXPOSE 8080
 
 CMD ["sh", "/app/start.sh"]
