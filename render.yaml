@@ -4,8 +4,6 @@ services:
     runtime: docker
     plan: starter
     envVars:
-      - key: OPENCLAW_GATEWAY_PORT
-        value: "8080"
       - key: OPENCLAW_GATEWAY_BIND
         value: lan
       - key: OPENCLAW_STATE_DIR
@@ -19,7 +17,7 @@ services:
       - key: TELEGRAM_BOT_TOKEN
       - key: NODE_ENV
         value: production
-    healthCheckPath: /health
+    healthCheckPath: /healthz
     disk:
       name: openclaw-data
       mountPath: /data
