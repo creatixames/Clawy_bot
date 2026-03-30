@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: openclaw
+    runtime: docker
+    plan: starter
+    envVars:
+      - key: OPENCLAW_GATEWAY_PORT
+        value: "8080"
+      - key: OPENCLAW_STATE_DIR
+        value: /data/.openclaw
+      - key: OPENCLAW_WORKSPACE_DIR
+        value: /data/workspace
+      - key: OPENCLAW_GATEWAY_TOKEN
+        generateValue: true
+      - key: GEMINI_API_KEY
+      - key: DEEPSEEK_API_KEY
+      - key: TELEGRAM_BOT_TOKEN
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /health
+    disk:
+      name: openclaw-data
+      mountPath: /data
+      sizeGB: 1
